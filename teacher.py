@@ -9,7 +9,8 @@ class Teacher(Employer):
         self.sd=sd
         super().__init__(name,phone,email,salary,sd)
 
-    def additional_health_hazard(self,salary,course):
+    def additional_health_hazard(self,salary,course,name):
+        self.name=name
         if self.course ==1:
             salary=self.salary+(self.salary*0.3)
         
@@ -18,7 +19,14 @@ class Teacher(Employer):
     
         elif self.course==3:
             salary=self.salary+(self.salary*0.15)
-
-        return salary 
-    def Show_info(self,name,phone,email,course,salary,sd,professor):
-        print(professor)
+        sar=("O salario do professor "+name+" é "+str(salary))
+        return sar 
+    def Show_info(self,name,phone,email,salary,course,sd):
+        if course==1:
+            course="Engenharia"
+        elif course ==2:
+            course="Direito"
+        elif course==3:
+            course="pedagogia"
+        self.professor= ("Nome: "+name+"\nTelefone: "+str(phone)+"\nEmail: "+email+"\nSalario: "+str(salary)+"\ncurso: "+str(course)+"\nData de engresso: "+str(sd)+"\n")
+        return self.professor

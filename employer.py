@@ -6,7 +6,8 @@ class Employer(Person):
         self.sd=sd
         super().__init__(name,phone,email)
     
-    def work_days(self,sd,s):
+    def work_days(self,sd,name):
+        self.name=name
         datapadrao = datetime.date(sd[0], sd[1], sd[2])
         hoje = datetime.date.today()
 
@@ -17,6 +18,6 @@ class Employer(Person):
         
             delta = hoje - datapadrao
             
+        dt="O professor "+name+" trabalha hà "+str(delta)
         
-        
-        return delta
+        return dt
