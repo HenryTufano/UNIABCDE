@@ -4,17 +4,12 @@ import os
 op=99
 ia=0
 ip=0
-aluno=[]
-professor=[]
-sd=[]
-s=[]
-pa=[]
-men=[]
+lg=False
 def clear():
     os.system('cls' if os.name=='nt' else 'clear')
 while op!=0:
-    op=int(input("Escolha uma das opçoes:\n 1 - Deseja cadastrar um novo estudante\n2 - Deseja cadastrar um novo Professor \n3 - Mostrar informação \n4 - Mostrar mensalidades\n5 - Mostrar dias de trabalho\n6 - Adicional de peculiaridade\n7-atalho de usuarios\n8-criar cadastro\n9-Efetuar login\nEscolha a sua opção: "))
-    if op == 1:
+    op=int(input("Escolha uma das opçoes:\n0 - Sair\n1 - Deseja cadastrar um novo estudante\n2 - Deseja cadastrar um novo Professor \n3 - Mostrar informação \n4 - Mostrar mensalidades\n5 - Mostrar dias de trabalho\n6 - Adicional de peculiaridade\n7 - atalho de usuarios\n8 - criar cadastro\n9 - Efetuar login\nEscolha a sua opção: "))
+    if op == 1 and lg==True:
         if ia<2:
             clear()#exatamente
             name=input('Digite o nome da pessoa :')
@@ -35,7 +30,7 @@ while op!=0:
         else:
             print("Alunos maximos cadastrados")
             
-    elif op == 2:
+    elif op == 2 and lg==True:
         if ip<2:
             clear()
             nome=input('Digite o nome da pessoa :')
@@ -63,9 +58,9 @@ while op!=0:
         else:
             print("Professores maximos cadastrados")
             
-    elif op == 3:
+    elif op == 3 and lg==True:
         clear()
-        opc=int(input("Digite qual opção que deseja ver :\n1- Para estudantes\n2-Para professores\nEscolhe uma opção: "))
+        opc=int(input("Digite qual opção que deseja ver :\n0 - Sair\n1- Para estudantes\n2-Para professores\nEscolhe uma opção: "))
         if opc==1:
             clear()
             print(a.Show_info(a.name,a.phone,a.email,a.ar,a.course))
@@ -74,21 +69,21 @@ while op!=0:
             clear()     
             print(p1.Show_info(p1.name,p1.phone,p1.email,p1.salary,p1.course,p1.sd))
             print(p2.Show_info(p2.name,p2.phone,p2.email,p2.salary,p2.course,p2.sd))
-    elif op == 4:
+    elif op == 4 and lg==True:
         clear()
         print(a.monthly_payment(a.course,a.name))
         print(x.monthly_payment(x.course,x.name))
         
-    elif op == 5:
+    elif op == 5 and lg==True:
         clear()
         print(p1.work_days(p1.sd,p1.name))
         print(p2.work_days(p2.sd,p1.name))
 
-    elif op == 6:
+    elif op == 6 and lg==True:
         clear()
         print(p1.additional_health_hazard(p1.salary,p1.course,p1.name))
         print(p2.additional_health_hazard(p2.salary,p2.course,p2.name))
-    elif op==7:
+    elif op==7 and lg==True:
         name="aluno1"
         phone = "4002-8922"
         email = "aluno1@gmail.com"
@@ -148,5 +143,8 @@ while op!=0:
             pl_senha = fs.readline()
         if login==pl_login and senha==pl_senha:
             print("Login efetuado com sucesso, Bem vindo "+login+"\n")
+            lg=True
         else:
             print("senha incorreta ou usuario não cadastrado\n")
+    else:
+        print("\nAcesso invalido.\n")
